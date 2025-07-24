@@ -33,7 +33,7 @@ const HomePage = () => {
       try {
         const { data } = await axios.get(`/api/products?keyword=${keyword}`);
         console.log('Fetched data:', data); // Debug: check structure
-        dispatch({ type: 'FETCH_SUCCESS', payload: data.products }); // ✅ FIXED LINE
+        dispatch({ type: 'FETCH_SUCCESS', payload: data }); // ✅ FIXED LINE
       } catch (err) {
         dispatch({ type: 'FETCH_FAIL', payload: err.message });
       }
