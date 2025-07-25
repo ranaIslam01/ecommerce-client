@@ -36,7 +36,10 @@ export default function ProfilePage() {
     const fetchOrders = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const { data } = await axios.get(`/api/orders/myorders`);
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_URL || 'https://ecommerce-server-1-6mhy.onrender.com'}/api/orders/myorders`,
+          { withCredentials: true }
+        );
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (error) {
         dispatch({ type: 'FETCH_FAIL', payload: error.message });
