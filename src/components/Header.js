@@ -65,36 +65,45 @@ const Header = () => {
               Cart {cartBadgeContent}
             </Link>
             {userInfo ? (
-              <div className="relative">
+              <div
+                className="relative group"
+                onMouseEnter={() => setIsProfileDropdownOpen(true)}
+                onMouseLeave={() => setIsProfileDropdownOpen(false)}
+              >
                 <button
-                  onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
-                  className="text-gray-600 hover:text-gray-900 font-medium focus:outline-none"
+                  className="text-gray-600 hover:text-gray-900 font-medium focus:outline-none flex items-center gap-1"
+                  aria-haspopup="true"
+                  aria-expanded={isProfileDropdownOpen}
+                  tabIndex={0}
                 >
-                  {userInfo.name}
+                  <span>{userInfo.name}</span>
+                  <svg className="w-4 h-4 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
                 </button>
                 <div
-                  className={`absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 ${
-                    isProfileDropdownOpen ? 'block' : 'hidden'
+                  className={`absolute right-0 mt-2 w-52 bg-white rounded-xl shadow-xl py-2 z-20 border border-gray-100 transition-all duration-200 ease-in-out ${
+                    isProfileDropdownOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'
                   }`}
+                  onMouseEnter={() => setIsProfileDropdownOpen(true)}
+                  onMouseLeave={() => setIsProfileDropdownOpen(false)}
                 >
                   <Link
                     to="/profile"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="block px-5 py-2 text-base text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition rounded-t-xl"
                     onClick={() => setIsProfileDropdownOpen(false)}
                   >
                     Profile
                   </Link>
                   <Link
                     to="/myorders"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    className="block px-5 py-2 text-base text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition"
                     onClick={() => setIsProfileDropdownOpen(false)}
                   >
                     My Orders
                   </Link>
                   <Link
                     to="#logout"
-                    onClick={logoutHandler} 
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={logoutHandler}
+                    className="block px-5 py-2 text-base text-gray-700 hover:bg-red-50 hover:text-red-600 transition rounded-b-xl"
                   >
                     Sign Out
                   </Link>
