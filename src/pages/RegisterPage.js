@@ -34,7 +34,7 @@ export default function RegisterPage() {
         name,
         email,
         password,
-      });
+      }, { withCredentials: true });
       ctxDispatch({ type: 'USER_LOGIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
       navigate(redirect || '/');
