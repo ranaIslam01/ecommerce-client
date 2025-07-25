@@ -85,6 +85,13 @@ const Header = () => {
                     Profile
                   </Link>
                   <Link
+                    to="/myorders"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => setIsProfileDropdownOpen(false)}
+                  >
+                    My Orders
+                  </Link>
+                  <Link
                     to="#logout"
                     onClick={logoutHandler} 
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
@@ -142,6 +149,13 @@ const Header = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Profile ({userInfo.name})
+                </Link>
+                <Link
+                  to="/myorders"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  My Orders
                 </Link>
                 <Link
                   to="#logout"
