@@ -94,11 +94,11 @@ export default function OrderPage() {
           <div className="border p-4 rounded-lg bg-white shadow">
             <h2 className="text-xl font-bold mb-2">Order Summary</h2>
             <div className="space-y-1">
-              <p className="flex justify-between"><span>Items</span><span>${order.itemsPrice.toFixed(2)}</span></p>
-              <p className="flex justify-between"><span>Shipping</span><span>${order.shippingPrice.toFixed(2)}</span></p>
-              <p className="flex justify-between"><span>Tax</span><span>${order.taxPrice.toFixed(2)}</span></p>
+              <p className="flex justify-between"><span>Items</span><span>${(order.itemsPrice ?? 0).toFixed(2)}</span></p>
+              <p className="flex justify-between"><span>Shipping</span><span>${(order.shippingPrice ?? 0).toFixed(2)}</span></p>
+              <p className="flex justify-between"><span>Tax</span><span>${(order.taxPrice ?? 0).toFixed(2)}</span></p>
               <hr className="my-2"/>
-              <p className="flex justify-between font-bold"><span>Order Total</span><span>${order.totalPrice.toFixed(2)}</span></p>
+              <p className="flex justify-between font-bold"><span>Order Total</span><span>${(order.totalPrice ?? 0).toFixed(2)}</span></p>
             </div>
             {/* Payment button placeholder */}
           </div>
