@@ -31,7 +31,7 @@ const HomePage = () => {
     const fetchProducts = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const { data } = await axios.get(`/api/products?keyword=${keyword}`);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL || ''}/api/products?keyword=${keyword}`);
         console.log('Fetched data:', data); // Debug: check structure
         dispatch({ type: 'FETCH_SUCCESS', payload: data }); // ✅ FIXED LINE
       } catch (err) {
