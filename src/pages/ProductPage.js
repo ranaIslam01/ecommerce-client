@@ -130,7 +130,17 @@ export default function ProductPage() {
       {/* Product Details Section - Ager মতোই থাকবে */}
       <div className="grid md:grid-cols-2 gap-8 mb-8">
         <div>
-          <img className="w-full rounded-lg shadow-lg" src={product.image?.startsWith('http') ? product.image : `/images/${product.image}`} alt={product.name} />
+          <img
+            className="w-full rounded-lg shadow-lg"
+            src={
+              product.image?.startsWith('http')
+                ? product.image
+                : product.image?.startsWith('/images/')
+                  ? product.image
+                  : `/images/${product.image}`
+            }
+            alt={product.name}
+          />
         </div>
         <div>
           <h1 className="text-4xl font-extrabold text-gray-900 mb-2">{product.name}</h1>
