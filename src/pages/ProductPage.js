@@ -172,9 +172,9 @@ export default function ProductPage() {
       {/* Reviews Section - Notun ongsho */}
       <div className="mt-12">
         <h2 className="text-2xl font-bold mb-4">Customer Reviews</h2>
-        {product.reviews.length === 0 && <div className="p-4 border rounded-md bg-gray-50">No reviews yet.</div>}
+        {product.reviews?.length === 0 && <div className="p-4 border rounded-md bg-gray-50">No reviews yet.</div>}
         <div className="space-y-4">
-          {product.reviews.map((review) => (
+          {product.reviews?.map((review) => (
             <div key={review._id} className="p-4 border rounded-md bg-white shadow">
               <div className="flex items-center mb-1">
                 <strong className="mr-2">{review.name}</strong>
