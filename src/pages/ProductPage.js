@@ -109,8 +109,7 @@ export default function ProductPage() {
       await axios.post(
         `${process.env.REACT_APP_API_URL || ''}/api/products/${productId}/reviews`,
         { rating, comment },
-        // Token pathanor dorkar nei karon amra cookie bebohar korchi
-        // { headers: { Authorization: `Bearer ${userInfo.token}` }, } 
+        { withCredentials: true } // কুকি পাঠানোর জন্য এই লাইন যোগ করা হলো
       );
       dispatchReview({ type: 'SUBMIT_SUCCESS' });
       alert('Review submitted successfully. It might take a moment to appear.');
