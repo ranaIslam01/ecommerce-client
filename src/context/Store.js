@@ -16,6 +16,8 @@ if (initialUserInfo) {
   if (userSpecificCart) {
     initialCartItems = JSON.parse(userSpecificCart);
   }
+} else if (localStorage.getItem('cartItems')) {
+  initialCartItems = JSON.parse(localStorage.getItem('cartItems'));
 }
 // অতিথি ব্যবহারকারীর জন্য initialState-এ cartItems সবসময় খালি থাকবে, localStorage থেকে লোড হবে না।
 
@@ -83,13 +85,11 @@ function reducer(state, action) {
             item._id === existItem._id ? newItem : item
           )
         : [...state.cart.cartItems, newItem];
-      
       if (state.userInfo) {
-        // যদি ইউজার লগইন করা থাকে, তার ID দিয়ে কার্ট localStorage এ সেভ করা
         localStorage.setItem(`cartItems_${state.userInfo._id}`, JSON.stringify(cartItems));
+      } else {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
       }
-      // অতিথি ব্যবহারকারীর জন্য cartItems localStorage এ সেভ করা হবে না,
-      // সেগুলো শুধু বর্তমান সেশনের জন্য state-এ থাকবে।
       return { ...state, cart: { ...state.cart, cartItems } };
     }
     case 'CART_REMOVE_ITEM': {
@@ -98,15 +98,17 @@ function reducer(state, action) {
       );
       if (state.userInfo) {
         localStorage.setItem(`cartItems_${state.userInfo._id}`, JSON.stringify(cartItems));
+      } else {
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
       }
-      // অতিথি ব্যবহারকারীর জন্য localStorage আপডেট করা হবে না।
       return { ...state, cart: { ...state.cart, cartItems } };
     }
-    case 'CART_CLEAR': // সাধারণত অর্ডার প্লেস করার পর
+    case 'CART_CLEAR':
       if (state.userInfo) {
         localStorage.removeItem(`cartItems_${state.userInfo._id}`);
+      } else {
+        localStorage.removeItem('cartItems');
       }
-      // অতিথি ব্যবহারকারীর জন্য localStorage এ কিছু ছিল না, তাই মোছারও দরকার নেই।
       return { ...state, cart: { ...state.cart, cartItems: [] } };
     
     case 'SAVE_SHIPPING_ADDRESS':
