@@ -64,7 +64,7 @@ export default function ProductPage() {
     const fetchProduct = async () => {
       dispatchProduct({ type: 'FETCH_REQUEST' });
       try {
-        const { data } = await axios.get(`/api/products/${productId}`);
+        const { data } = await axios.get(`${process.env.REACT_APP_API_URL || ''}/api/products/${productId}`);
         dispatchProduct({ type: 'FETCH_SUCCESS', payload: data });
       } catch (err) {
         dispatchProduct({ type: 'FETCH_FAIL', payload: err.message });
@@ -107,7 +107,7 @@ export default function ProductPage() {
     dispatchReview({ type: 'SUBMIT_REQUEST' });
     try {
       await axios.post(
-        `/api/products/${productId}/reviews`,
+        `${process.env.REACT_APP_API_URL || ''}/api/products/${productId}/reviews`,
         { rating, comment },
         // Token pathanor dorkar nei karon amra cookie bebohar korchi
         // { headers: { Authorization: `Bearer ${userInfo.token}` }, } 
@@ -131,7 +131,7 @@ export default function ProductPage() {
       {/* Product Details Section - Ager মতোই থাকবে */}
       <div className="grid md:grid-cols-2 gap-8 mb-8">
         <div>
-          <img className="w-full rounded-lg shadow-lg" src={product.image} alt={product.name} />
+          <img className="w-full rounded-lg shadow-lg" src={product.image?.startsWith('http') ? product.image : `/images/${product.image}`} alt={product.name} />
         </div>
         <div>
           <h1 className="text-4xl font-extrabold text-gray-900 mb-2">{product.name}</h1>
