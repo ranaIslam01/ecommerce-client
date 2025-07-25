@@ -30,7 +30,7 @@ export default function RegisterPage() {
       return;
     }
     try {
-      const { data } = await axios.post('/api/users', {
+      const { data } = await axios.post(`${process.env.REACT_APP_API_URL || ''}/api/users`, {
         name,
         email,
         password,
