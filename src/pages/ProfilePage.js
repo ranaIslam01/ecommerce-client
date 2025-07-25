@@ -136,15 +136,27 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 px-2 md:px-0 w-full max-w-6xl mx-auto">
-      <div className="md:w-1/3 w-full mb-8 md:mb-0">
-        <h2 className="text-2xl font-bold mb-4 text-center md:text-left">Update Profile</h2>
-        <form onSubmit={submitHandler} className="bg-white p-4 md:p-6 rounded-lg shadow-md w-full max-w-md mx-auto md:mx-0">
-            <div className="mb-4"><label className="block mb-1">Name</label><input value={name} onChange={(e) => setName(e.target.value)} required className="w-full p-2 border rounded"/></div>
-            <div className="mb-4"><label className="block mb-1">Email</label><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full p-2 border rounded"/></div>
-            <div className="mb-4"><label className="block mb-1">New Password</label><input type="password" onChange={(e) => setPassword(e.target.value)} className="w-full p-2 border rounded"/></div>
-            <div className="mb-6"><label className="block mb-1">Confirm New Password</label><input type="password" onChange={(e) => setConfirmPassword(e.target.value)} className="w-full p-2 border rounded"/></div>
-            <button type="submit" className="w-full bg-gray-900 text-white py-2 rounded-lg font-semibold hover:bg-gray-800">Update</button>
+    <div className="flex justify-center items-center min-h-[60vh] bg-gradient-to-br from-gray-100 to-gray-200 py-8 px-2">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8">
+        <h2 className="text-3xl font-extrabold text-gray-900 mb-6 text-center">Update Profile</h2>
+        <form onSubmit={submitHandler} className="space-y-5">
+          <div>
+            <label className="block mb-1 text-gray-700 font-semibold">Name</label>
+            <input value={name} onChange={(e) => setName(e.target.value)} required className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+          </div>
+          <div>
+            <label className="block mb-1 text-gray-700 font-semibold">Email</label>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" />
+          </div>
+          <div>
+            <label className="block mb-1 text-gray-700 font-semibold">New Password</label>
+            <input type="password" onChange={(e) => setPassword(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Leave blank to keep current password" />
+          </div>
+          <div>
+            <label className="block mb-1 text-gray-700 font-semibold">Confirm New Password</label>
+            <input type="password" onChange={(e) => setConfirmPassword(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition" placeholder="Repeat new password" />
+          </div>
+          <button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold text-lg transition">Update</button>
         </form>
       </div>
     </div>
