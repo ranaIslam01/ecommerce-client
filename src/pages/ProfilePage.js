@@ -84,7 +84,7 @@ export default function ProfilePage() {
                 <table className="min-w-full text-sm">
                     <thead><tr className="text-left"><th>ID</th><th>DATE</th><th>TOTAL</th><th>PAID</th><th>DELIVERED</th><th>ACTIONS</th></tr></thead>
                     <tbody>
-                        {orders.map((order) => (
+                        {(Array.isArray(orders) ? orders : []).map((order) => (
                             <tr key={order._id} className="border-t">
                                 <td className="py-2">{order._id}</td>
                                 <td>{order.createdAt.substring(0, 10)}</td>
