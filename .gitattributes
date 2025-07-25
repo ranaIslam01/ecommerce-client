@@ -1,0 +1,29 @@
+# Automatically normalize line endings
+* text=auto
+
+# Frontend source code files (React, TypeScript, etc.)
+*.js     text eol=lf
+*.jsx    text eol=lf
+*.ts     text eol=lf
+*.tsx    text eol=lf
+*.json   text eol=lf
+*.css    text eol=lf
+*.scss   text eol=lf
+*.html   text eol=lf
+
+# Fonts, images, and assets (binary)
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.svg    binary
+*.webp   binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.eot    binary
+
+# Markdown & config
+*.md     text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
