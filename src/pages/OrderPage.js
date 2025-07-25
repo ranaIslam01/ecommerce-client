@@ -59,8 +59,8 @@ export default function OrderPage() {
         <div className="md:col-span-3 space-y-4">
             <div className="border bg-white p-4 rounded-lg shadow">
               <h2 className="font-bold mb-2">Shipping</h2>
-              <p><strong>Name:</strong> {order.shippingAddress.fullName || order.user.name}</p>
-              <p><strong>Address: </strong>{order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.postalCode}, {order.shippingAddress.country}</p>
+              <p><strong>Name:</strong> {(order.shippingAddress?.fullName || order.user?.name || 'N/A')}</p>
+              <p><strong>Address: </strong>{order.shippingAddress?.address}, {order.shippingAddress?.city}, {order.shippingAddress?.postalCode}, {order.shippingAddress?.country}</p>
                {order.isDelivered ? (
                 <div className="bg-green-100 text-green-700 p-2 rounded mt-2">Delivered at {order.deliveredAt}</div>
                ) : (
