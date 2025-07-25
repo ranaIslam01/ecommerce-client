@@ -52,7 +52,11 @@ export default function ProfilePage() {
       return;
     }
     try {
-      const { data } = await axios.put(`/api/users/profile`, { name, email, password }, { withCredentials: true });
+      const { data } = await axios.put(
+        `${process.env.REACT_APP_API_URL || 'https://ecommerce-server-1-6mhy.onrender.com'}/api/users/profile`,
+        { name, email, password },
+        { withCredentials: true }
+      );
       ctxDispatch({ type: 'USER_LOGIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
       alert('Profile updated successfully');

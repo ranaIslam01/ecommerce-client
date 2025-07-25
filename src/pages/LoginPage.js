@@ -18,10 +18,11 @@ export default function LoginPage() {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('/api/users/login', {
-        email,
-        password,
-      }, { withCredentials: true });
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API_URL || 'https://ecommerce-server-1-6mhy.onrender.com'}/api/users/login`,
+        { email, password },
+        { withCredentials: true }
+      );
       ctxDispatch({ type: 'USER_LOGIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
       navigate(redirect || '/');
