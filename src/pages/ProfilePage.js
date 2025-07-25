@@ -69,10 +69,10 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="grid md:grid-cols-3 gap-8">
-      <div className="md:col-span-1">
-        <h2 className="text-2xl font-bold mb-4">Update Profile</h2>
-        <form onSubmit={submitHandler} className="bg-white p-6 rounded-lg shadow-md">
+    <div className="flex flex-col md:grid md:grid-cols-3 gap-8 px-2 md:px-0 w-full max-w-6xl mx-auto">
+      <div className="md:col-span-1 w-full mb-8 md:mb-0">
+        <h2 className="text-2xl font-bold mb-4 text-center md:text-left">Update Profile</h2>
+        <form onSubmit={submitHandler} className="bg-white p-4 md:p-6 rounded-lg shadow-md w-full max-w-md mx-auto md:mx-0">
             <div className="mb-4"><label className="block mb-1">Name</label><input value={name} onChange={(e) => setName(e.target.value)} required className="w-full p-2 border rounded"/></div>
             <div className="mb-4"><label className="block mb-1">Email</label><input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required className="w-full p-2 border rounded"/></div>
             <div className="mb-4"><label className="block mb-1">New Password</label><input type="password" onChange={(e) => setPassword(e.target.value)} className="w-full p-2 border rounded"/></div>
@@ -80,16 +80,16 @@ export default function ProfilePage() {
             <button type="submit" className="w-full bg-gray-900 text-white py-2 rounded-lg font-semibold hover:bg-gray-800">Update</button>
         </form>
       </div>
-      <div className="md:col-span-2">
-        <h2 className="text-2xl font-bold mb-4">My Orders</h2>
+      <div className="md:col-span-2 w-full">
+        <h2 className="text-2xl font-bold mb-4 text-center md:text-left">My Orders</h2>
         {loading ? ( <p>Loading orders...</p> ) : error ? ( <p className="text-red-500">{error}</p> ) : (
-            <div className="overflow-x-auto bg-white p-4 rounded-lg shadow">
+            <div className="overflow-x-auto bg-white p-2 md:p-4 rounded-lg shadow w-full">
                 <table className="min-w-full text-sm">
                     <thead><tr className="text-left"><th>ID</th><th>DATE</th><th>TOTAL</th><th>PAID</th><th>DELIVERED</th><th>ACTIONS</th></tr></thead>
                     <tbody>
-                        {(Array.isArray(orders) ? orders : []).map((order) => (
+                        {sortedOrders.map((order) => (
                             <tr key={order._id} className="border-t">
-                                <td className="py-2">{order._id}</td>
+                                <td className="py-2 break-all max-w-[100px]">{order._id}</td>
                                 <td>{order.createdAt.substring(0, 10)}</td>
                                 <td>${order.totalPrice.toFixed(2)}</td>
                                 <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'No'}</td>
