@@ -52,7 +52,7 @@ export default function ProfilePage() {
       return;
     }
     try {
-      const { data } = await axios.put(`/api/users/profile`, { name, email, password });
+      const { data } = await axios.put(`/api/users/profile`, { name, email, password }, { withCredentials: true });
       ctxDispatch({ type: 'USER_LOGIN', payload: data });
       localStorage.setItem('userInfo', JSON.stringify(data));
       alert('Profile updated successfully');
