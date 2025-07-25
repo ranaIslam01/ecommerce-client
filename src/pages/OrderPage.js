@@ -79,7 +79,7 @@ export default function OrderPage() {
             <div className="border bg-white p-4 rounded-lg shadow">
               <h2 className="font-bold mb-2">Items</h2>
               <div className="space-y-2">
-              {order.orderItems.map((item) => (
+              {(order.orderItems || []).map((item) => (
                 <div key={item._id} className="grid grid-cols-6 items-center gap-2">
                   <img src={item.image} alt={item.name} className="w-12 h-12 object-cover rounded" />
                   <Link to={`/product/${item.product}`} className="col-span-3 hover:underline">{item.name}</Link>
